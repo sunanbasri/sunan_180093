@@ -1,0 +1,428 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MkDocs Material Boilerplate (Starter Kit) - Deploy documentation to hosting platforms (Netlify, GitHub Pages, GitLab Pages, and AWS Amplify Console) with Docker, pipenv, and GitHub Actions.">
+      
+      
+      
+        <meta name="author" content="peaceiris">
+      
+      
+        <link rel="canonical" href="https://mkdocs.peaceiris.com/difrensial/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Komputasi Numerik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="manifest" href="../manifest.json" crossorigin="use-credentials">
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#solusi_numerik_untuk_persamaan_difrensial_biasa" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MkDocs Material Boilerplate" class="md-header__button md-logo" aria-label="MkDocs Material Boilerplate" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Komputasi Numerik
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-header__source">
+        
+<a href="https://github.com/peaceiris/mkdocs-material-boilerplate/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sunan Basri
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MkDocs Material Boilerplate" class="md-nav__button md-logo" aria-label="MkDocs Material Boilerplate" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Komputasi Numerik
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/peaceiris/mkdocs-material-boilerplate/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sunan Basri
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Integrasi Numerik
+      </a>
+    </li>
+    <li class="md-nav__item">
+      <a href="../aljabar/index.html" class="md-nav__link">
+        Persamaan Aljabar Linear
+      </a>
+    </li>
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        Persamaan Diferensial Biasa
+      </a>
+    </li>
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#solusi_numerik_untuk_persamaan_difrensial_biasa" class="md-nav__link">
+    Solusi Numerik Untuk Persamaan Difrensial Biasa
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persamaan_diferensialbiasa_metode_euler_orde_1" class="md-nav__link">
+    Persamaan DiferensialBiasa Metode Euler Orde 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algoritma_pdb_metode_euler" class="md-nav__link">
+    Algoritma PDB Metode Euler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementasi_code_python_pdb_metode_euler_orde_1" class="md-nav__link">
+    Implementasi Code Python PDB Metode Euler Orde 1
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+                <h3 id="solusi_numerik_untuk_persamaan_difrensial_biasa">Solusi Numerik Untuk Persamaan Difrensial Biasa<a class="headerlink" href="#solusi_numerik_untuk_persamaan_difrensial_biasa" title="Permanent link">&para;</a></h3>
+<p>Persamaan diferensial biasa adalah persamaan diferensial dimana fungsi yang tidak diketahui (variabel terikat) adalah fungsi dari satu variabel bebas. Dalam bentuk yang paling sederhana, fungsi yang tidak diketahui adalah fungsi real atau fungsi kompleks, tetapi biasanya juga dapat berupa fungsi vektor atau matriks. Selain itu, persamaan diferensial biasa diklasifikasikan menurut turunan tertinggi dari variabel dependen yang muncul dalam persamaan.</p>
+<p>Berikut adalah contoh sederhana dari hukum gerak kedua Newton, yang menghasilkan persamaan diferensial. [^1]</p>
+<p>
+<script type="math/tex; mode=display">
+m\dfrac{d^{2}x\left( t\right) }{dt^{2}}=F\left( x\left( t\right) \right)
+</script>
+</p>
+<p>Metode numerik untuk persamaan diferensial biasa merupakan metode yang digunakan untuk menyelesaikan pendekatan numerik untuk solusi persamaan diferensial biasa (ODE). Penggunaannya juga dikenal sebagai " integrasi numerik ", meskipun istilah ini juga dapat merujuk pada perhitungan integral .</p>
+<p>Ada banyak persamaan diferensial yang tidak bisa diselesaikan dengan menggunakan perhitungan simbolis atau analisis. Namun, untuk tujuan praktis seperti dalam bidang teknik dengan menggunakan pendekatan numerik biasanya sudah cukup. Algoritma yang digunakan di sini untuk menghitung perkiraan seperti itu. Metode yang lain yaitu dengan menggunakan teknik dari kalkulus untuk mendapatkan solusi perluasan deret.[^2]</p>
+<p>contoh persamaan diferensial biasa (PDB)
+<script type="math/tex; mode=display">
+\dfrac{dy}{dx}=x+y
+</script>
+</p>
+<h3 id="persamaan_diferensialbiasa_metode_euler_orde_1">Persamaan DiferensialBiasa Metode Euler Orde 1<a class="headerlink" href="#persamaan_diferensialbiasa_metode_euler_orde_1" title="Permanent link">&para;</a></h3>
+<p>Suatu PD orde satu dapat dinyatakan secara umum dalam dua bentuk, yaitu:</p>
+<ol>
+<li>Bentuk Implisit</li>
+</ol>
+<p>
+<script type="math/tex; mode=display">
+F\left( x,y,\dfrac{dx}{dy}\right) =0
+</script>
+</p>
+<p>​                                                                   atau F (x ,y ,y' )= 0...........................(1)</p>
+<ol>
+<li>Bentuk Eksplisit</li>
+</ol>
+<p>
+<script type="math/tex; mode=display">
+\dfrac{dy}{dx}=f\left( x,y\right)
+</script>
+</p>
+<p>​                                                                   atau y ′ = <em>f</em>(x ,y ) . ............................. (2)</p>
+<p>Seperti pada matakuliah Kalkulus: y' adalah turunan pertama dari y terhadap variabel x. y''  adalah turunan kedua dari y terhadap variabel x. Dst</p>
+<p>Jika diberikan persamaan diferensial biasa orde satu </p>
+<p>​       y' = dy/dx = f(x, y); y(x0) = y</p>
+<p>Misalkan</p>
+<p>​       yr = y(xr) </p>
+<p>adalah hampiran nilai y di xr yang dihitung dengan metode Euler. Dalam hal ini</p>
+<p>​       xr = x0 + rh, r = 0,1,2,... n. </p>
+<p>Metoda Euler diturunkan dengan cara menguraikan y (x r+1) di sekitar x r ke dalam deret Taylor: 
+<script type="math/tex; mode=display">
+y\left( x_{r+1}\right) =y\left( x_{r}\right) +\dfrac{\left( x_{r+1}-x_{r}\right) }{1!}y'\left( x,r\right) +\dfrac{\left( x_{r+1}-x_{r}\right) ^{2}}{2!}y''\left( x_{r}\right) +\ldots .(1) 
+</script>[^3]
+</p>
+<h3 id="algoritma_pdb_metode_euler">Algoritma PDB Metode Euler<a class="headerlink" href="#algoritma_pdb_metode_euler" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="n">t0</span><span class="p">,</span> <span class="n">N0</span> <span class="o">=</span> <span class="n">nilai</span> <span class="n">awal</span> <span class="n">dan</span> <span class="n">titik</span> <span class="n">akhir</span>
+<span class="o">-</span> <span class="n">tn</span><span class="o">=</span><span class="n">b</span> <span class="o">=</span> <span class="n">batas</span> <span class="nb">interval</span>
+<span class="o">-</span> <span class="n">ndata</span> <span class="o">=</span> <span class="n">jumlah</span> <span class="n">subinterval</span>
+
+<span class="n">Definisi</span>  <span class="n">fungsi</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">=</span> <span class="n">untuk</span> <span class="n">sisi</span> <span class="n">kanan</span> <span class="n">persamaan</span> <span class="n">diferensial</span>
+<span class="n">x</span><span class="p">:</span><span class="o">=</span><span class="n">N0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="o">=</span><span class="n">t0</span>
+<span class="n">h</span><span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="n">tn</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">:</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">to</span> <span class="n">n</span>
+    <span class="err">{</span><span class="n">y</span><span class="p">:</span><span class="o">=</span><span class="n">y</span><span class="o">+</span><span class="n">h</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">x</span><span class="p">:</span><span class="o">=</span> <span class="n">N0</span><span class="o">+</span><span class="n">nh</span>
+    <span class="k">output</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="err">}</span>
+</code></pre></div>
+
+<h3 id="implementasi_code_python_pdb_metode_euler_orde_1">Implementasi Code Python PDB Metode Euler Orde 1<a class="headerlink" href="#implementasi_code_python_pdb_metode_euler_orde_1" title="Permanent link">&para;</a></h3>
+<p>berikut adalah comtoh penerapan code program python untuk mencari PDB metode Euler Orde 1</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">k</span><span class="o">=</span> <span class="mf">0.02</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">N</span>
+
+<span class="n">N0</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ndata</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">tn</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="n">tn</span><span class="p">,</span><span class="n">ndata</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ndata</span><span class="p">)</span>
+<span class="n">N</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">N0</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ndata</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">N</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">N</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">h</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="n">N</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">k</span> <span class="o">=</span><span class="mf">0.02</span>    
+<span class="n">NA</span> <span class="o">=</span> <span class="n">N0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">NA</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;analitik&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Euler&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Kemudian berikut adalah hasil dari code program diatas:</p>
+<p><img alt="" src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20210612124302467.png" /></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:refrensi">
+<p>https://id.wikipedia.org/wiki/Persamaan_diferensial_biasa&#160;<a class="footnote-backref" href="#fnref:refrensi" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:refrensi">
+<p>https://en.wikipedia.org/wiki/Numerical_methods_for_ordinary_differential_equations&#160;<a class="footnote-backref" href="#fnref:refrensi" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:refrensi">
+<p>https://informatika.stei.itb.ac.id/~rinaldi.munir/MetNum/2010-2011/Solusi%20Persamaan%20Diferensial%20Biasa%20(Bagian%201).pdf&#160;<a class="footnote-backref" href="#fnref:refrensi" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            &copy; 2019 peaceiris
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/peaceiris" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/piris314en" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
