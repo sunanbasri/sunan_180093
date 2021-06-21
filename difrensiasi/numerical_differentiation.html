@@ -13,7 +13,7 @@
         <meta name="author" content="peaceiris">
       
       
-        <link rel="canonical" href="https://mkdocs.peaceiris.com/difrensial/">
+        <link rel="canonical" href="https://mkdocs.peaceiris.com/difrensiasi/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#solusi_numerik_untuk_persamaan_difrensial_biasa" class="md-skip">
+        <a href="#numerical_differentation" class="md-skip">
           Skip to content
         </a>
       
@@ -100,6 +100,8 @@
             Komputasi Numerik
           </span>
         </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+        </div>
       </div>
     </div>
     
@@ -108,6 +110,10 @@
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
+      
+
+    
+    
       <div class="md-header__source">
         
 <a href="https://github.com/peaceiris/mkdocs-material-boilerplate/" title="Go to repository" class="md-source" data-md-component="source">
@@ -159,19 +165,19 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    Sunan Basri
+    GitHub
   </div>
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix> 
+  <ul class="md-nav__list" data-md-scrollfix>
     <li class="md-nav__item">
       <a href="../error/error.html" class="md-nav__link">
         Error in Numerical Computations
       </a>
     </li>
     <li class="md-nav__item">
-      <a href="../difrensiasi/numerical_differentiation.html" class="md-nav__link">
+      <a href="#" class="md-nav__link">
         Numerical Diferentation
       </a>
     </li>
@@ -186,7 +192,7 @@
       </a>
     </li>
     <li class="md-nav__item">
-      <a href="#" class="md-nav__link">
+      <a href="../difrensial/diferensial.html" class="md-nav__link">
         Numerical Solution Of Ordinary Diferential Equations
       </a>
     </li>
@@ -214,29 +220,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#solusi_numerik_untuk_persamaan_difrensial_biasa" class="md-nav__link">
-    Solusi Numerik Untuk Persamaan Difrensial Biasa
+  <a href="#numerical_differentation" class="md-nav__link">
+    Numerical Differentation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#persamaan_diferensialbiasa_metode_euler_orde_1" class="md-nav__link">
-    Persamaan DiferensialBiasa Metode Euler Orde 1
+  <a href="#tabel_1_formula_diferensial_numerik" class="md-nav__link">
+    Tabel 1. Formula diferensial numerik
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#algoritma_pdb_metode_euler" class="md-nav__link">
-    Algoritma PDB Metode Euler
+  <a href="#algoritma" class="md-nav__link">
+    Algoritma
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementasi_code_python_pdb_metode_euler_orde_1" class="md-nav__link">
-    Implementasi Code Python PDB Metode Euler Orde 1
+  <a href="#implementasi_coding" class="md-nav__link">
+    Implementasi Coding
   </a>
   
 </li>
@@ -251,109 +257,101 @@
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
-                <h3 id="solusi_numerik_untuk_persamaan_difrensial_biasa">Solusi Numerik Untuk Persamaan Difrensial Biasa<a class="headerlink" href="#solusi_numerik_untuk_persamaan_difrensial_biasa" title="Permanent link">&para;</a></h3>
-<p>Persamaan diferensial biasa adalah persamaan diferensial dimana fungsi yang tidak diketahui (variabel terikat) adalah fungsi dari satu variabel bebas. Dalam bentuk yang paling sederhana, fungsi yang tidak diketahui adalah fungsi real atau fungsi kompleks, tetapi biasanya juga dapat berupa fungsi vektor atau matriks. Selain itu, persamaan diferensial biasa diklasifikasikan menurut turunan tertinggi dari variabel dependen yang muncul dalam persamaan.</p>
-<p>Berikut adalah contoh sederhana dari hukum gerak kedua Newton, yang menghasilkan persamaan diferensial. [^1]</p>
-<p>
+              
+                
+                  <a href="https://github.com/peaceiris/mkdocs-material-boilerplate/edit/master/docs_sample/difrensiasi.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+              
+                
+                <h3 id="numerical_differentation">Numerical Differentation<a class="headerlink" href="#numerical_differentation" title="Permanent link">&para;</a></h3>
+<p>Dalam Menyelesaikan masalah fisik sering kali melibatkan fungsi yang kompleks dan sangat rumit sehingga sulit atau bahkan tidak mungkin untuk menemukan nilai diferensial melalui analisis. Selain itu, data eksperimen biasanya tidak mudah diselesaikan melalui analisis. Diferensiasi numerik adalah metode solusi lain masalah. Ada beberapa cara untuk mendapatkan rumus diferensial numerik, Termasuk ekspansi deret Taylor dan Lagrange. rumus Tylor yang digunakan untuk mengembangkan fungsi f(x h) dinyatakan sebagai berikut:
 <script type="math/tex; mode=display">
-m\dfrac{d^{2}x\left( t\right) }{dt^{2}}=F\left( x\left( t\right) \right)
+f\left( x\pm h\right) = f\left( x\right) \pm hf'\left( x\right) +\dfrac{1}{2}h^{2}f''\left( x\right) \pm \dfrac{1}{6}h^{3}f'''\left( x\right) +\ldots \ldots \left( 1.1\right)
+</script>
+Pengembangan fungsi f(x) ke dalam formulasi Lagrange dinyatakan dengan:
+<script type="math/tex; mode=display">
+f\left( x\right) =\sum ^{n}_{i=0}f\left( x_{i}\right) \prod ^{n\cdot }_{j_{j\neq i}^{=0}}\dfrac{\left( x-x_{j}\right) }{\left( x_{i}-x_{j}\right) }\ldots \ldots \left( 1.2\right)
+</script>
+dengan tanda “  “ menyatakan “ hasil kali dari “. Sebagai contoh untuk n = 1 dan n = 2 penyelesaian f(x) adalah :</p>
+<p>a. Untuk n = 1
+<script type="math/tex; mode=display">
+f\left( x\right) =\sum ^{1}_{i=0}f\left( x_{i}\right) \prod ^{1\cdot }_{J_{j\neq i}^{=0}}\dfrac{\left( x-x_{j}\right) }{\left( x_{i}-x_{j}\right) }=f\left( 0\right) =\dfrac{\left( x-x_{1}\right) }{\left( x_{0}-x_{1}\right) }+\dfrac{\left( x-x_{0}\right) }{\left( x_{1}-x_{0}\right) }\ldots \ldots \left( 1.3\right)
+</script>
+b. Untuk n = 2 
+<script type="math/tex; mode=display">
+f\left( x\right) =\sum ^{1}_{i=0}f\left( x_{i}\right) \prod ^{1\cdot }_{J_{j\neq i}^{=0}}\dfrac{\left( x-x_{j}\right) }{\left( x_{i}-x_{j}\right) }=f\left( 0\right) \dfrac{\left( x-x_{1}\right) \left( x-x_{2}\right) }{\left( x_{0}-x_{1}\right) \left( x_{0}-\cdot x_{2}\right) }+f\left( x1\right)\dfrac{\left( x-x_{0}\right) \left( x-x_{2}\right) }{\left( x_{1}-x_{0}\right) \left( x_{1}- x_{2}\right) }+
+f\left( x2\right)\dfrac{\left( x-x_{0}\right) \left( x-x_{1}\right) }{\left( x_{2}-x_{0}\right) \left( x_{2}-x_{1}\right) }\ldots \ldots \left( 1.4\right)
 </script>
 </p>
-<p>Metode numerik untuk persamaan diferensial biasa merupakan metode yang digunakan untuk menyelesaikan pendekatan numerik untuk solusi persamaan diferensial biasa (ODE). Penggunaannya juga dikenal sebagai " integrasi numerik ", meskipun istilah ini juga dapat merujuk pada perhitungan integral .</p>
-<p>Ada banyak persamaan diferensial yang tidak bisa diselesaikan dengan menggunakan perhitungan simbolis atau analisis. Namun, untuk tujuan praktis seperti dalam bidang teknik dengan menggunakan pendekatan numerik biasanya sudah cukup. Algoritma yang digunakan di sini untuk menghitung perkiraan seperti itu. Metode yang lain yaitu dengan menggunakan teknik dari kalkulus untuk mendapatkan solusi perluasan deret.[^2]</p>
-<p>contoh persamaan diferensial biasa (PDB)
+<h3 id="tabel_1_formula_diferensial_numerik">Tabel 1. Formula diferensial numerik<a class="headerlink" href="#tabel_1_formula_diferensial_numerik" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Diferensial Pertama <img src="image-20210621094917790.png" alt="image-20210621094917790" style="zoom:150%;" />Difrensial orde Tinggi<img src="image-20210621095045090.png" alt="image-20210621095045090" style="zoom:150%;" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Contoh Kasus
 <script type="math/tex; mode=display">
-\dfrac{dy}{dx}=x+y
+x\left( t\right) =5e^{-0.5t}\cos \left( 4\pi t\right)
 </script>
-</p>
-<h3 id="persamaan_diferensialbiasa_metode_euler_orde_1">Persamaan DiferensialBiasa Metode Euler Orde 1<a class="headerlink" href="#persamaan_diferensialbiasa_metode_euler_orde_1" title="Permanent link">&para;</a></h3>
-<p>Suatu PD orde satu dapat dinyatakan secara umum dalam dua bentuk, yaitu:</p>
-<ol>
-<li>Bentuk Implisit</li>
-</ol>
-<p>
-<script type="math/tex; mode=display">
-F\left( x,y,\dfrac{dx}{dy}\right) =0
-</script>
-</p>
-<p>​                                                                   atau F (x ,y ,y' )= 0...........................(1)</p>
-<ol>
-<li>Bentuk Eksplisit</li>
-</ol>
-<p>
-<script type="math/tex; mode=display">
-\dfrac{dy}{dx}=f\left( x,y\right)
-</script>
-</p>
-<p>​                                                                   atau y ′ = <em>f</em>(x ,y ) . ............................. (2)</p>
-<p>Seperti pada matakuliah Kalkulus: y' adalah turunan pertama dari y terhadap variabel x. y''  adalah turunan kedua dari y terhadap variabel x. Dst</p>
-<p>Jika diberikan persamaan diferensial biasa orde satu </p>
-<p>​       y' = dy/dx = f(x, y); y(x0) = y</p>
-<p>Misalkan</p>
-<p>​       yr = y(xr) </p>
-<p>adalah hampiran nilai y di xr yang dihitung dengan metode Euler. Dalam hal ini</p>
-<p>​       xr = x0 + rh, r = 0,1,2,... n. </p>
-<p>Metoda Euler diturunkan dengan cara menguraikan y (x r+1) di sekitar x r ke dalam deret Taylor: 
-<script type="math/tex; mode=display">
-y\left( x_{r+1}\right) =y\left( x_{r}\right) +\dfrac{\left( x_{r+1}-x_{r}\right) }{1!}y'\left( x,r\right) +\dfrac{\left( x_{r+1}-x_{r}\right) ^{2}}{2!}y''\left( x_{r}\right) +\ldots .(1) 
-</script>[^3]
-</p>
-<h3 id="algoritma_pdb_metode_euler">Algoritma PDB Metode Euler<a class="headerlink" href="#algoritma_pdb_metode_euler" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="n">t0</span><span class="p">,</span> <span class="n">N0</span> <span class="o">=</span> <span class="n">nilai</span> <span class="n">awal</span> <span class="n">dan</span> <span class="n">titik</span> <span class="n">akhir</span>
-<span class="o">-</span> <span class="n">tn</span><span class="o">=</span><span class="n">b</span> <span class="o">=</span> <span class="n">batas</span> <span class="nb">interval</span>
-<span class="o">-</span> <span class="n">ndata</span> <span class="o">=</span> <span class="n">jumlah</span> <span class="n">subinterval</span>
-
-<span class="n">Definisi</span>  <span class="n">fungsi</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">=</span> <span class="n">untuk</span> <span class="n">sisi</span> <span class="n">kanan</span> <span class="n">persamaan</span> <span class="n">diferensial</span>
-<span class="n">x</span><span class="p">:</span><span class="o">=</span><span class="n">N0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="o">=</span><span class="n">t0</span>
-<span class="n">h</span><span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="n">tn</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
-<span class="k">for</span> <span class="n">n</span><span class="p">:</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">to</span> <span class="n">n</span>
-    <span class="err">{</span><span class="n">y</span><span class="p">:</span><span class="o">=</span><span class="n">y</span><span class="o">+</span><span class="n">h</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">x</span><span class="p">:</span><span class="o">=</span> <span class="n">N0</span><span class="o">+</span><span class="n">nh</span>
-    <span class="k">output</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="err">}</span>
+Jika diketahui x(t) merupakan simpangan dalam (cm) dan t waktu dalam detik (s). Tentukan nilai kecepatan dan percepatan gerak osilator setiap kenaikan 0,01 detik dari 0 sampai 10 detik. Tuliskan hasil dalam bentuk grafik v (t) vs t dan a (t) vs t. Kemudian gambarkan pula grafik simpangannya sebagai fungsi waktu dalam satu layar. Gunakan metode diferensial pusat 5 titik (DP5).[^1]</p>
+<h3 id="algoritma">Algoritma<a class="headerlink" href="#algoritma" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="err">a. definisikan fungsi x (t) dengan perintah inline.</span>
+<span class="err">b. beri nilai waktu awal to = 0, waktu akhir ta = 10 dan kenaikkan waktu h = 0,01.</span>
+<span class="err">c. beri nilai rentang waktu t = to : h : ta.</span>
+<span class="err">d. untuk nilai t = to : h : ta hitunglah : v (t), a (t) dan x (t).</span>
+<span class="err">e. tampilkan nilai t, v (t), a (t) dan x (t) dalam bentuk matriks kolom.</span>
+<span class="err">f. buat grafik hubungan antara x (t) vs t , v (t) vs t dan a (t) vs t dalam satu layar.</span>
+<span class="err">dengan perintah subplot</span>
 </code></pre></div>
 
-<h3 id="implementasi_code_python_pdb_metode_euler_orde_1">Implementasi Code Python PDB Metode Euler Orde 1<a class="headerlink" href="#implementasi_code_python_pdb_metode_euler_orde_1" title="Permanent link">&para;</a></h3>
-<p>berikut adalah comtoh penerapan code program python untuk mencari PDB metode Euler Orde 1</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
-    <span class="n">k</span><span class="o">=</span> <span class="mf">0.02</span>
-    <span class="k">return</span> <span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">N</span>
-
-<span class="n">N0</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">ndata</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="n">tn</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="n">tn</span><span class="p">,</span><span class="n">ndata</span><span class="p">)</span>
-<span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ndata</span><span class="p">)</span>
-<span class="n">N</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">N0</span>
-<span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ndata</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">N</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">N</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">h</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="n">N</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-
-<span class="n">k</span> <span class="o">=</span><span class="mf">0.02</span>    
-<span class="n">NA</span> <span class="o">=</span> <span class="n">N0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">NA</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;analitik&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Euler&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<h3 id="implementasi_coding">Implementasi Coding<a class="headerlink" href="#implementasi_coding" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">x</span><span class="p">=</span><span class="n">inline</span><span class="p">(</span><span class="s">&#39;5*exp(-0.5*t).*cos(2*pi*t)&#39;</span><span class="p">,</span><span class="s">&#39;t&#39;</span><span class="p">);</span>
+<span class="n">t0</span><span class="p">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">ta</span><span class="p">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">h</span><span class="p">=</span><span class="mf">0.01</span><span class="p">;</span>
+<span class="n">t</span><span class="p">=</span><span class="n">t0</span><span class="p">:</span><span class="n">h</span><span class="p">:</span><span class="n">ta</span><span class="p">;</span>
+<span class="n">v</span><span class="p">=(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="mi">8</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">h</span><span class="p">)</span><span class="o">+</span><span class="mi">8</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">))</span><span class="o">./</span><span class="p">(</span><span class="mi">12</span><span class="o">*</span><span class="n">h</span><span class="p">);</span>
+<span class="n">a</span><span class="p">=(</span><span class="o">-</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span><span class="o">+</span><span class="mi">16</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="mi">30</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="mi">16</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">))</span><span class="o">./</span><span class="p">(</span><span class="mi">12</span><span class="o">*</span><span class="n">h</span><span class="o">.^</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">xt</span><span class="p">=</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="p">[</span><span class="n">t</span><span class="o">&#39;</span> <span class="n">xt</span><span class="o">&#39;</span> <span class="n">v</span><span class="o">&#39;</span> <span class="n">a</span><span class="o">&#39;</span><span class="p">]</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">xt</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t(detik)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;x(cm)&#39;</span><span class="p">)</span>
+<span class="n">grid</span> <span class="s">on</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t(detik)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;v(cm/det)&#39;</span><span class="p">)</span>
+<span class="n">grid</span> <span class="s">on</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t(detik)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;a(cm/det2)&#39;</span><span class="p">)</span>
+<span class="n">grid</span> <span class="s">on</span>
 </code></pre></div>
 
-<p>Kemudian berikut adalah hasil dari code program diatas:</p>
-<p><img alt="" src="../pic1.png" /></p>
+<p>Output: </p>
+<div class="codehilite"><pre><span></span><code><span class="err">0.0000 ……………… ……………… ………………</span>
+<span class="err"> ……………… ……………… ……………… ………………</span>
+<span class="err">9.9700 0.0336 0.0235 -1.3581</span>
+<span class="err">9.9800 0.0338 0.0099 -1.3511</span>
+<span class="err">9.9900 0.0338 -0.0035 -1.3390</span>
+<span class="err">10.0000 0.0337 -0.0168 -1.3216</span>
+</code></pre></div>
+
+<p>Grafik:</p>
+<p><img alt="image-20210621100931816" src="image-20210621100931816.png" /></p>
 <div class="footnote">
 <hr />
 <ol>
-<li id="fn:refrensi">
-<p>https://id.wikipedia.org/wiki/Persamaan_diferensial_biasa&#160;<a class="footnote-backref" href="#fnref:refrensi" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:refrensi">
-<p>https://en.wikipedia.org/wiki/Numerical_methods_for_ordinary_differential_equations&#160;<a class="footnote-backref" href="#fnref:refrensi" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:refrensi">
-<p>https://informatika.stei.itb.ac.id/~rinaldi.munir/MetNum/2010-2011/Solusi%20Persamaan%20Diferensial%20Biasa%20(Bagian%201).pdf&#160;<a class="footnote-backref" href="#fnref:refrensi" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn:Refrensi">
+<p>http://staff.uny.ac.id/sites/default/files/pendidikan/warsono-spdmsi/modulfisikakomputasiwarsono.pdf&#160;<a class="footnote-backref" href="#fnref:Refrensi" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
